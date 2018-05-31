@@ -1,0 +1,32 @@
+
+#datetime module can covert and compare and creats date/time Variables and more 
+import datetime
+
+#the 12 signs of Zodiac 
+signs = ["Aries","Taurus", "Gemini", "cancer" , "Leo" , "Virgo",
+ "Libra","scopio", "Sagittarius" , "Capricorn", "Aqurius" , "Pisces"]
+
+#the month range of every sign like [(3,21),(4,19)] = range of Aries 
+sign_range = [[(3,21),(4,19)],[(4,20),(5,20)],[(5,21),(6,20)],[(6,21),(7,22)],
+[(7,23),(8,22)],[(8,23),(9,22)],[(9,23),(10,22)],[(10,23),(11,21)],
+[(11,22),(12,21)],[(12,22),(1,19)],[(1,20),(2,18)],[(2,19),(3,20)]]
+
+'''
+function that take a date and sign list and signs ranage list to ckeck  
+the date is waht range anf rutern the sign
+'''
+def what_sign(birthdate,sign_range,signs):
+	i =0
+	while i < 12:
+		com_date = datetime.date(int(birthdate[0]),int(birthdate[1]),int(birthdate[2]))
+		date1 = datetime.date(int(birthdate[0]),sign_range[i][0][0],sign_range[i][0][1])
+		date2 = datetime.date(int(birthdate[0]),sign_range[i][1][0],sign_range[i][1][1])
+		if date1 < com_date < date2:
+			return signs[i]
+			break 
+		else :
+			i += 1
+			continue
+		
+birthdate = raw_input("Enter your date of birth like this y/m/d:  ").split("/")
+print what_sign(birthdate,sign_range,signs)
